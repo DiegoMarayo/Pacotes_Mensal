@@ -4,7 +4,7 @@ const totalSpan = document.getElementById('total');
 function updateTotal() {
   let total = 0;
   inputs.forEach(input => {
-    total += parseFloat(input.value) || 0;
+    total += parseInt(input.value) || 0;
   });
   totalSpan.textContent = total.toFixed(2);
 }

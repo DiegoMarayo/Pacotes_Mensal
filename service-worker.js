@@ -1,6 +1,6 @@
 {
-    "name": "Calculadora Anual",
-    "short_name": "Calculadora",
+    "name": "Pacotes Mensal",
+    "short_name": "Pacotes Mensal",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
