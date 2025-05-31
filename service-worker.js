@@ -1,20 +1,22 @@
-{
-    "name": "Pacotes Mensal",
-    "short_name": "Pacotes Mensal",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#2196f3",
-    "icons": [
-      {
-        "src": "icon-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "icon-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-}
+const CACHE_NAME = 'pacotes-mensal-v1';
+const ASSETS = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(resp => resp || fetch(event.request))
+  );
+});

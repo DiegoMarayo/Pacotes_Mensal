@@ -1,43 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    background: #f2f2f2;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  .months {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .month label {
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-  
-  .input-month {
-    width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-  }
-  
-  .total {
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 1.5rem;
-  }
+  font-family: sans-serif;
+  padding: 1.5rem;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1 {
+  color: #2196f3;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 150px;
+}
+
+.mes {
+  color: #0e0000;
+  font-size: 30px;
+  width: 100px;
+  align-items: center;
+}
+

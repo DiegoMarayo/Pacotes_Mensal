@@ -1,19 +1,48 @@
-const inputs = document.querySelectorAll('.input-month');
-const totalSpan = document.getElementById('total');
+const meses = [
+  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+];
 
-function updateTotal() {
-  let total = 0;
-  inputs.forEach(input => {
-    total += parseInt(input.value) || 0;
+const container = document.getElementById("meses-container");
+const totalSpan = document.getElementById("total");
+
+function criarCampos() {
+  meses.forEach(mes => {
+    const div = document.createElement("div");
+    div.className = "mes";
+    div.innerHTML = `
+      <label for="${mes}">${mes}:</label>
+      <input type="number" id="${mes}" step="0.01" />
+    `;
+    container.appendChild(div);
   });
-  totalSpan.textContent = total.toFixed(2);
 }
 
-inputs.forEach(input => {
-  input.addEventListener('input', updateTotal);
-});
-
-// PWA install
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js');
+function carregarValores() {
+  meses.forEach(mes => {
+    const input = document.getElementById(mes);
+    const valorSalvo = localStorage.getItem(mes);
+    if (valorSalvo !== null) {
+      input.value = valorSalvo;
+    }
+    input.addEventListener("input", () => {
+      localStorage.setItem(mes, input.value);
+      calcularTotal();
+    });
+  });
 }
+
+function calcularTotal() {
+  let total = 0;
+  meses.forEach(mes => {
+    const valor = parseInt(document.getElementById(mes).value) || 0;
+    total += valor;
+  });
+  totalSpan.textContent = total.toFixed();
+}
+
+window.onload = function () {
+  criarCampos();
+  carregarValores();
+  calcularTotal();
+};
